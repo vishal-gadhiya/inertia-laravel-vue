@@ -34,11 +34,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return Inertia::render('Frontend/Dashboard');
+})->middleware(['auth', 'verified'])->name('frontend.dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('frontend.profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('frontend.profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('frontend.profile.destroy');
 });
